@@ -143,22 +143,21 @@ $employee = [
 <body>
     <table width="100%" border="1" cellspacing="0">
         <thead bgcolor="pink">
-            <?php foreach($employee as $data){ ?>
-                
+            <?php foreach($employee as $data){?>
                 <tr>
                 <?php foreach($data as $key => $value){?>
                     <th><?php echo $key;?></th>
-                <?php }  ?>
+                <?php }?>
             </tr>
            <?php break; }?>
         </thead>
         <tbody>
             <?php foreach($employee as $row){ ?>
                 <tr>
-                    <th><?php echo $row['name'] ?></th>
-                    <th><?php echo $row['email'] ?></th>
-                    <th><?php echo $row['Age'] ?></th>
-                    <th><?php echo $row['Postal code'] ?></th>
+                    <td><?php echo $row['name'] ?></td>
+                    <td><?php echo $row['email'] ?></td>
+                    <td><?php echo $row['Age'] ?></td>
+                    <td><?php echo $row['Postal code'] ?></td>
                 </tr>
 
 
