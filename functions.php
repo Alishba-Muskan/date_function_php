@@ -46,5 +46,5 @@ function printname1($name, $count){
     }
 }
 
-printname1("Muskan", 3);
+printname1("Muskan", 10);
 ?>
