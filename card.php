@@ -63,150 +63,276 @@ $products = [
 ];
 ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
-   <style>
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Poppins, sans-serif;
-    color: white;
-}
+    <title>Watch Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Poppins, sans-serif;
+        color: white;
+      }
 
-body {
-    background: rgb(1, 14, 67);
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-}
+      body {
+        background: rgb(1, 14, 67);
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+      }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-}
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+      }
 
-.product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 20px;
-}
+      .product-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 20px;
+      }
 
-.product-list:has(.product:hover) .product:not(:hover) {
-    filter: blur(5px);
-    opacity: 0.7;
-}
+      .product-list:has(.product:hover) .product:not(:hover) {
+        filter: blur(5px);
+        opacity: 0.7;
+      }
 
-.product {
-    background: #131313;
-    border: 1px solid #606060;
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 15px;
-    transition: filter 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
+      .product {
+        background: #131313;
+        border: 1px solid #606060;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+        transition: filter 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      }
 
-.product img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 7px;
-    filter: grayscale(70%);
-    margin-bottom: 15px;
-}
+      .product img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 7px;
+        filter: grayscale(70%);
+        margin-bottom: 15px;
+      }
 
-.info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
+      .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
 
-h3 {
-    font-weight: 500;
-    font-size: 1.1rem;
-    margin: 0;
-    color: #fff;
-}
+      h3 {
+        font-weight: 500;
+        font-size: 1.1rem;
+        margin: 0;
+        color: #fff;
+      }
 
-p {
-    font-style: italic;
-    color: rgb(217, 217, 217);
-    margin: 0;
-}
+      p {
+        font-style: italic;
+        color: rgb(217, 217, 217);
+        margin: 0;
+      }
 
-.desc {
-    font-size: 0.85rem;
-    color: #bfbfbf;
-    text-align: center;
-    font-style: normal;
-    margin: 10px 0;
-}
+      .desc {
+        font-size: 0.85rem;
+        color: #bfbfbf;
+        text-align: center;
+        font-style: normal;
+        margin: 10px 0;
+      }
 
-button {
-    width: 100%;
-    padding: 0.6rem;
-    border: 1px solid #606060;
-    background: none;
-    color: white;
-    font-weight: 400;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
+      button {
+        width: 100%;
+        padding: 0.6rem;
+        border: 1px solid #606060;
+        background: none;
+        color: white;
+        font-weight: 400;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
 
-button:hover {
-    background: #303030;
-}
+      button:hover {
+        background: #303030;
+      }
 
-   </style>
+      .view-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        color: #00bcd4;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .view-link:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
-<div class="container">
-  <div class="product-list">
-<?php foreach($products as $pro){ ?>
-    <div class="product">
-      <div class="img">
-        <img src="<?php echo $pro["image"] ?>" alt="">
+    <div class="container">
+      <div class="product-list">
+        <?php foreach($products as $pro){ ?>
+          <div class="product">
+            <div class="img">
+              <img src="<?php echo $pro["image"] ?>" alt="">
+            </div>
+            <div class="info">
+              <h3><?php echo $pro["title"] ?></h3>
+              <p>Rs: <?php echo $pro["price"] ?></p>
+            </div>
+            <p class="desc"><?php echo $pro["description"] ?></p>
+            <button>Add to Cart</button>
+            <a href="#" class="view-link">View Details</a>
+          </div>
+        <?php } ?>
       </div>
-      <div class="info">
-        <h3><?php echo $pro["title"] ?></h3>
-        <p>Rs: <?php echo $pro["price"] ?></p>
-      </div>
-      <p class="desc"><?php echo $pro["description"] ?></p>
-      <button>Add to Cart</button>
     </div>
-    <?php } ?>
-  </div>
-</div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Poppins, sans-serif;
+        color: white;
+      }
+
+      body {
+        background: rgb(1, 14, 67);
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .product-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 20px;
+      }
+
+      .product-list:has(.product:hover) .product:not(:hover) {
+        filter: blur(5px);
+        opacity: 0.7;
+      }
+
+      .product {
+        background: #131313;
+        border: 1px solid #606060;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+        transition: filter 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      }
+
+      .product img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 7px;
+        filter: grayscale(70%);
+        margin-bottom: 15px;
+      }
+
+      .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      h3 {
+        font-weight: 500;
+        font-size: 1.1rem;
+        margin: 0;
+        color: #fff;
+      }
+
+      p {
+        font-style: italic;
+        color: rgb(217, 217, 217);
+        margin: 0;
+      }
+
+      .desc {
+        font-size: 0.85rem;
+        color: #bfbfbf;
+        text-align: center;
+        font-style: normal;
+        margin: 10px 0;
+      }
+
+      button {
+        width: 100%;
+        padding: 0.6rem;
+        border: 1px solid #606060;
+        background: none;
+        color: white;
+        font-weight: 400;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background: #303030;
+      }
+
+      .view-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        color: #00bcd4;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .view-link:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+    </style>

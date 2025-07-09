@@ -1,19 +1,14 @@
 <?php
 
-
-// $fruits = ['apple', 'mango', 'pineapple', 'orange'];
-
-// foreach($fruits as $data){
-//      echo $data.'<br>';
-// }
+$number = [23, 45, 56, 39, 30];
 
 
-$students = [
-    ['Muskan', 'Muskan@gmail.com', 20],
-    ['Abeerah', 'Abeerah@gmail.com', 20],
-    ['Neha', 'Neha@gmail.com', 20],
-    ['Raima', 'Raima@gmail.com', 20]
-];
+// $students = [
+//     ['Muskan', 'Muskan@gmail.com', 20],
+//     ['Abeerah', 'Abeerah@gmail.com', 20],
+//     ['Neha', 'Neha@gmail.com', 20],
+//     ['Raima', 'Raima@gmail.com', 20]
+// ];
 
 
 // foreach ($students as $data) {
@@ -22,6 +17,9 @@ $students = [
 //     } 
 //     echo '<br>';
 // }
+
+
+echo implode('<br>'  ,  $number);
 
 
 // $name = [
@@ -63,9 +61,6 @@ $employee = [
         'Postal code' => 7659
     ]
     ];
-
-
-
 //     foreach($employee as $data){
 //         foreach($data as $key => $value){
 //             echo ''. $key .':   '. $value .'<br>';
@@ -73,18 +68,7 @@ $employee = [
 //     echo '<br>';
 // }
 
-
-
-
-
 ?>
-
-
-
-
-
-
-
 
 <!-- 
 <!DOCTYPE html>
@@ -115,8 +99,6 @@ $employee = [
             ?>
 
 <?php //foreach($students as $student){ ?>
-
-
     <tr>
         <td><?php //echo $student[0]; ?></td>
         <td><?php //echo $student[1]; ?></td>
@@ -130,9 +112,6 @@ $employee = [
 </body>
 </html> -->
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -141,29 +120,28 @@ $employee = [
     <title>Array</title>
 </head>
 <body>
-    <table width="100%" border="1" cellspacing="0">
-        <thead bgcolor="pink">
-            <?php foreach($employee as $data){?>
-                <tr>
-                <?php foreach($data as $key => $value){?>
-                    <th><?php echo $key;?></th>
-                <?php }?>
-            </tr>
-           <?php break; }?>
-        </thead>
-        <tbody>
-            <?php foreach($employee as $row){ ?>
-                <tr>
-                    <td><?php echo $row['name'] ?></td>
-                    <td><?php echo $row['email'] ?></td>
-                    <td><?php echo $row['Age'] ?></td>
-                    <td><?php echo $row['Postal code'] ?></td>
-                </tr>
-
-
+ <table border="1" cellspacing="0" width="100%">
+     <thead bgcolor="pink">
+          <?php foreach($employee as $data){ ?>
+            <tr>
+                <?php foreach($data as $key => $value){ ?>
+                     <th><?php echo $key ?></th>
                 <?php } ?>
-        </tbody>
-    </table>
+            </tr>
+            <?php break; }  ?>
+     </thead>
+     <tbody>
+       
+            <?php foreach($employee as $value){ ?>
+                 <tr>
+                <td> <?php echo $value['name'] ?> </td>
+                <td> <?php echo $value['email'] ?> </td>
+                <td> <?php echo $value['Age'] ?> </td>
+                <td> <?php echo $value['Postal code'] ?> </td>
+                </tr>
+            <?php } ?>
+     </tbody>
+ </table>
 </body>
 </html>
 
