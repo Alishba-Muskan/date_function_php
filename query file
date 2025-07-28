@@ -1,0 +1,43 @@
+CREATE table country(countryId int primary key identity(1001,1), countryName varchar(50))
+INSERT INTO country(countryName) VALUES('pakistan') , ('India'), ('America')
+
+CREATE table province(provinceId int primary key identity(1001,1), provinceName varchar(50), countryId int foreign key references country(countryId))
+INSERT INTO province(provinceName, countryId) VALUES ('sindh', 1001) , ('peshawar',1001) , ('punjab',1002), ('Balochistan',1001), ('California', 1003), ('Texas', 1003), ('Florida', 1003)
+
+CREATE table cities(cityId int primary key identity(1001,1), cityName varchar(50), provinceId int foreign key references province(provinceId))
+INSERT INTO cities (cityName, provinceId) VALUES
+('Hyderabad', 1001),('Peshawar City', 1001), ('Multan', 1001),('Quetta', 1004),('Los Angeles', 1005),('Houston', 1006),('Miami', 1007);          
+
+SELECT * from country;
+SELECT * from province;
+SELECT * from cities;
+
+SELECT country.countryName, province.provinceName, cities.cityName
+FROM country
+join
+province on country.countryId = province.countryId
+JOIN
+cities on province.provinceId = cities.provinceId
+WHERE country.countryName = 'pakistan';
+
+
+CREATE table teacher(teacherId int primary key identity, teacherName varchar(50))
+INSERT into teacher(teacherName) VALUES ('sir_Asad') , ('sir_Maaz') , ('sir_Talha') , ('sir_Ayaan') , ('sir_Hashir')
+
+CREATE table batch(batchId int primary key identity, batchName varchar(50), FK_teacher int foreign key references teacher(teacherId))
+INSERT INTO batch(batchName, FK_teacher) VALUES ('batch_A', 1), ('batch_A', 1), ('batch_A', 1), ('batch_B', 1), ('batch_C', 2), ('batch_D', 3), ('batch_E', 4), ('batch_F', 5)
+
+CREATE TABLE student(studentId int primary key identity, studentName varchar(50), FK_student int foreign key references batch(batchId))
+INSERT INTO student (studentName, FK_student) VALUES ('Ahmed', 1),('Sara', 1),('Bilal', 2),('Hina', 5),
+('Zain', 3),('Ayesha', 4),('Usman', 1),('Nida', 2),('Fahad', 6),('Mariam', 1);
+
+SELECT * FROM teacher;
+SELECT * FROM batch;
+SELECT * FROM student;
+
+SELECT teacher.teacherName, batch.batchName, student.studentName
+from teacher
+JOIN 
+batch on teacher.teacherId = batch.FK_teacher
+JOIN
+student on batch.batchId = student.Fk_student 

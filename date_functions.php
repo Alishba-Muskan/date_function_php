@@ -53,7 +53,7 @@ echo '</pre>';
 
 
 
-$DOB = date_create('16-09-2004');
+$DOB = date_create('19-01-2012');
 $currdate = date_create();
 $diff = date_diff($DOB, $currdate);
 echo $diff->y . ' saal ' . $diff->m . ' mahine ' . $diff->d . ' din ho gaye ha <br>' ;
